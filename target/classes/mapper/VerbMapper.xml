@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.word_sketch.dao.IVerbDao">
+    <resultMap id="BaseResultMap" type="com.word_sketch.entity.WordWithSig">
+        <result column="word" javaType="String" jdbcType="VARCHAR" property="word"/>
+        <result column="sig" javaType="Float" jdbcType="FLOAT" property="sig"/>
+        <result column="freq" javaType="Integer" jdbcType="INTEGER" property="freq"/>
+    </resultMap>
+
+    <select id="getSubject" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,p.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w1_id=p.w_id and n.w2_id=p2.w_id and p2.word=#{verb} and (p2.pos="VV" or p2.pos="VE" or p2.pos="VC") and (p.pos="NN" or p.pos="NR")
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getObject" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,p.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w2_id=p.w_id and n.w1_id=p2.w_id and p2.word=#{verb} and (p2.pos="VV" or p2.pos="VE" or p2.pos="VC") and (p.pos="NN" or p.pos="NR")
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getModifiers" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,p.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w1_id=p.w_id and n.w2_id=p2.w_id and p2.word=#{verb} and (p2.pos="VV" or p2.pos="VE" or p2.pos="VC") and p.pos="AD"
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getModifies" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,p.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w2_id=p.w_id and n.w1_id=p2.w_id and p2.word=#{verb} and (p2.pos="VV" or p2.pos="VE" or p2.pos="VC") and (p.pos="AD" or p.pos="JJ")
+        order by ${order} desc limit 20;
+    </select>
+</mapper>

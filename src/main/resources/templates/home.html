@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Chinese Word Sketch</title>
+    <link rel="shortcut icon" href="/bitbug_favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" src="/formSubmit.js"></script>
+    <style>
+        .container1{
+            text-align: center;
+        }
+        .search {
+            width: 500px;
+            height: 40px;
+            border-radius: 18px;
+            outline: none;
+            border: 1px solid #ccc;
+            border-width: 3px;
+            border-color: #D14334;
+            margin: 0 auto;
+            position: relative;
+            top: 50%;
+            margin-top: 250px;
+            font-size: 24px;
+            font-family: "楷体";
+        }
+        .container2{
+            text-align: center;
+        }
+        .button{
+            width: 60px;
+            height: 25px;
+            border: 2px;
+            background: transparent;
+            font-size: 130%;
+            color: #D14334;
+        }
+        .button:hover {
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+<body>
+    <form name="home" method="get">
+
+        <div class="container1">
+            <img src="/logo1.png" align="center" height="50" width="50"/>
+            <input type="text" id="input" name="word" placeholder="search now!" class="search"/></br>
+        </div>
+        <div class="container2">
+            <input class="button" type="button" value="noun" onclick="formSubmit(this.value)"/>
+            <input class="button" type="button" value="verb" onclick="formSubmit(this.value)"/>
+            <input class="button" type="button" value="adj" onclick="formSubmit(this.value)"/>
+            <input class="button" type="button" value="adv" onclick="formSubmit(this.value)"/>
+        </div>
+    </form>
+</body>
+</html>

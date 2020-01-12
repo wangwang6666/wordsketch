@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chinese Word Sketch</title>
+    <link rel="shortcut icon" href="/bitbug_favicon.ico" type="image/x-icon" />
+    <style type="text/css">
+        .table-striped{
+            width: 700px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <table th:each="sentence:${sentences}" class="table-striped" border="1" cellpadding="0" cellspacing="0">
+        <tr >
+            <td class="number" colspan="10" th:text="${sentenceStat.count}"/>
+            <td colspan="10" th:utext="${sentence}">
+<!--                <span th:text="${sentence}" th:style="${sentenceStat.count}%2 == 0 ? 'background: #ddd' : 'background: none'"></span>-->
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

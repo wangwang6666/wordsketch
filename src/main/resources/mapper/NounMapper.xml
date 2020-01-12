@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.word_sketch.dao.INounDao">
+    <resultMap id="BaseResultMap" type="com.word_sketch.entity.WordWithSig">
+        <result column="word" javaType="String" jdbcType="VARCHAR" property="word"/>
+        <result column="sig" javaType="Float" jdbcType="FLOAT" property="sig"/>
+        <result column="freq" javaType="Integer" jdbcType="INTEGER" property="freq"/>
+    </resultMap>
+
+    <resultMap id="AndResult" type="com.word_sketch.entity.And">
+        <result column="w1_id" javaType="Integer" jdbcType="INTEGER" property="id1"/>
+        <result column="w2_id" javaType="Integer" jdbcType="INTEGER" property="id2"/>
+        <result column="statement" javaType="String" jdbcType="VARCHAR" property="statement"/>
+        <result column="freq" javaType="Integer" jdbcType="INTEGER" property="freq"/>
+        <result column="word1" javaType="String" jdbcType="VARCHAR" property="word1"/>
+        <result column="word2" javaType="String" jdbcType="VARCHAR" property="word2"/>
+    </resultMap>
+
+    <select id="getObjectWithoutPos" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,n.freq from words_pos_base p,co_n n,words_pos_base p2
+        where p.w_id>100 and n.w1_id=p.w_id and n.w2_id=p2.w_id and p2.word=#{noun} and (p2.pos="NN" or p2.pos="NR") and (p.pos="VV" or p.pos="VE" or p.pos="VC")
+        and p.freq>2000
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getSubjectWithoutPos" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,n.freq from words_pos_base p,co_n n,words_pos_base p2
+        where p.w_id>100 and n.w2_id=p.w_id and n.w1_id=p2.w_id and p2.word=#{noun} and (p2.pos="NN" or p2.pos="NR") and (p.pos="VV" or p.pos="VE" or p.pos="VC")
+        and p.freq>100
+        order by ${order} desc limit 20;
+    </select>
+
+
+
+    <select id="getModifies" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,n.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w2_id=p.w_id and n.w1_id=p2.w_id and p.w_id>100 and p2.word=#{noun} and (p2.pos="NN" or p2.pos="NR") and (p.pos="NN" or p.pos="NR")
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getModifier" resultMap="BaseResultMap">
+        select distinct(p.word),n.sig,n.freq from words_pos_base p,co_n n,words_pos_base p2
+        where n.w1_id=p.w_id and n.w2_id=p2.w_id and p2.word=#{noun} and (p2.pos="NN" or p2.pos="NR") and (p.pos="JJ" or p.pos="NN" or p.pos="NR")
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getMeasures" resultMap="BaseResultMap">
+        select distinct(p.word), n.sig, n.freq from words_pos_base p, co_n n, words_pos_base p2
+        where n.w1_id=p.w_id and n.w2_id=p2.w_id and p2.word=#{noun} and (p2.pos="NN" or p2.pos="NR") and (p.pos="M")
+        order by ${order} desc limit 20;
+    </select>
+
+    <select id="getComposites" resultMap="BaseResultMap">
+        select word,freq from words_pos_base where word like concat(#{noun},"%") and (pos="NN" or pos="NR")
+        order by freq desc limit 20;
+    </select>
+
+    <select id="getAnd" resultMap="AndResult">
+        select w2.w_id as w1_id, w.w_id as w2_id, count(*) as freq, w2.word as word1, w.word as word2 from words_pos_base w, inv_w i1, inv_w i2, inv_w i3, words_pos_base w2
+        where w2.word=#{noun} and i3.w_id=w2.w_id and i2.w_id=105 and i2.s_id=i3.s_id and i1.s_id=i2.s_id and i2.pos=i3.pos+1 and (i1.pos=i2.pos+1) and i1.w_id=w.w_id and (w.pos="NN" or w.pos="NR")
+        group by w.w_id order by freq desc limit 20;
+    </select>
+
+    <select id="getCachedAnd" resultMap="AndResult">
+        select * from enum where word1=#{noun} order by freq desc limit 20;
+    </select>
+
+    <insert id="addWord" parameterType="com.word_sketch.entity.And">
+        insert into enum(w1_id, w2_id,word1,word2,freq,statement)
+        values(
+        #{id1},
+        #{id2},
+        #{word1},
+        #{word2},
+        #{freq},
+        #{statement}
+        )
+    </insert>
+</mapper>

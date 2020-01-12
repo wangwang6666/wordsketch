@@ -1,0 +1,234 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chinese Word Sketch</title>
+    <link rel="shortcut icon" href="/bitbug_favicon.ico" type="image/x-icon" />
+    <link href="/result.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <form method="get" name="home">
+            <table>
+                <tr>
+                    <td colspan="5">
+                        <input type="text" id="input" name="word" placeholder="search now!" class="search" th:value="${word}"/></br>
+                    </td>
+                    <td>
+                        <input class="button" type="button" value="noun" onclick="formSubmit(this.value)"/>
+                    </td>
+                    <td>
+                        <input class="button" type="button" value="verb" onclick="formSubmit(this.value)"/>
+                    </td>
+                    <td>
+                        <input class="button" type="button" value="adj" onclick="formSubmit(this.value)"/>
+                    </td>
+                    <td>
+                        <input class="button" type="button" value="adv" onclick="formSubmit(this.value)"/>
+                    </td>
+                    <td>
+                        <input class="radio_type" type="radio" value="freq" name="order" id="frequent" onclick="orderSubmit()" th:checked="${#strings.contains(order,'freq')}"/>
+                        <label for="frequent">frequent</label>
+                        <input class="radio_type" type="radio" value="sig" name="order" id="sig" onclick="orderSubmit()" th:checked="${#strings.contains(order,'sig')}"/>
+                        <label for="sig">sig</label>
+                    </td>
+                </tr>
+            </table>
+    </form>
+    <div class="container">
+        <table class="box">
+            <tr>
+                <td th:text="${word}" align="right"></td>
+                <td align="left">as noun</td>
+            </tr>
+        </table>
+    </div>
+    <table align="center" width="100%">
+        <tr>
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Object_of</th>
+                    </tr>
+                    <tr class="item" text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                        <th>sig</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${Object_of}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.sig}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Subject_of</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                        <th>sig</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${Subject_of}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${word+collocate.word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${word+collocate.word}}" th:text="${collocate.sig}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Modifier</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                        <th>sig</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${modifier}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.sig}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+<!--        </tr>-->
+<!--        <tr>-->
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Modifies</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                        <th>sig</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${modifies}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${word+collocate.word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${word+collocate.word}}" th:text="${collocate.sig}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Measure</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                        <th>sig</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${measure}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word+word}}" th:text="${collocate.sig}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="table" align="center">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">Composite</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${composites}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word}}" th:text="${collocate.freq}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table class="table" align="center" th:if="${not #lists.isEmpty(and)}">
+                    <tr>
+                        <th class="head" colspan="4" rowspan="1.5">and</th>
+                    </tr>
+                    <tr text-align="center">
+                        <th>word</th>
+                        <th>frequent</th>
+                    </tr>
+                    <tr class="content" th:each="collocate : ${and}">
+                        <td>
+                            <a th:href="@{'/wordsketch/noun?word='+${collocate.word2}}" th:text="${collocate.word2}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word1}+'和'+${collocate.word2}}" th:text="${collocate.freq}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+<script language="javascript">
+function orderSubmit() {
+    document.home.action="noun"
+    document.home.submit();
+}
+
+function formSubmit(str){
+    var input = document.getElementById("input").value
+    if (input == "" || input == null){
+        alert("please enter a word first")
+        return
+    }
+    else {
+        if (str=="verb")
+            document.home.action="verb"
+        if (str=="noun")
+            document.home.action="noun"
+        if (str=="adj")
+            document.home.action="adjective"
+        if (str=="adv")
+            document.home.action="adverb"
+    }
+    document.home.submit();
+}
+</script>
+</html>
