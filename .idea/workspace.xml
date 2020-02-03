@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6308c0cf-eaf8-4e4a-bf38-0fb55ff3fc34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/formSubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/formSubmit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adj.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adv.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/noun.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/noun.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/verb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/verb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/wordsketch.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/formSubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/formSubmit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adj.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adv.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adv.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/js/result.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/noun.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/noun.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/search/search.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/verb.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/verb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wordsketch-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/wordsketch-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wordsketch-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/wordsketch-1.0-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,26 +108,26 @@
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="396" y="115" key="#Application" timestamp="1580714355930">
+    <state x="396" y="115" key="#Application" timestamp="1580720178385">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="396" y="115" key="#Application/0.0.1440.900@0.0.1440.900" timestamp="1580714355930" />
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1580717474718">
+    <state x="396" y="115" key="#Application/0.0.1440.900@0.0.1440.900" timestamp="1580720178385" />
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom" timestamp="1580720223318">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580717474718" />
-    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1580717474717">
+    <state width="1398" height="205" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580720223318" />
+    <state width="1398" height="205" key="GridCell.Tab.0.center" timestamp="1580720223317">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580717474717" />
-    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1580717474716">
+    <state width="1398" height="205" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580720223317" />
+    <state width="1398" height="205" key="GridCell.Tab.0.left" timestamp="1580720223316">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580717474716" />
-    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1580717474718">
+    <state width="1398" height="205" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580720223316" />
+    <state width="1398" height="205" key="GridCell.Tab.0.right" timestamp="1580720223318">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="205" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580717474718" />
+    <state width="1398" height="205" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580720223318" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

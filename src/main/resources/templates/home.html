@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Chinese Word Sketch</title>
     <link rel="shortcut icon" href="/bitbug_favicon.ico" type="image/x-icon" />
-    <script type="text/javascript" src="/formSubmit.js"></script>
+<!--    <script type="text/javascript" src="/formSubmit.js"></script>-->
     <style>
         .container1{
             text-align: center;
@@ -55,4 +55,25 @@
         </div>
     </form>
 </body>
+
+<script language="javascript">
+function formSubmit(str){
+    var input = document.getElementById("input").value
+    if (input == "" || input == null){
+        alert("please enter a word first")
+        return
+    }
+    else {
+        if (str=="verb")
+            document.home.action="wordsketch/verb"
+        if (str=="noun")
+            document.home.action="wordsketch/noun"
+        if (str=="adj")
+            document.home.action="wordsketch/adjective"
+        if (str=="adv")
+            document.home.action="wordsketch/adverb"
+    }
+    document.home.submit();
+}
+</script>
 </html>

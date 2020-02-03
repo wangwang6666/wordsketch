@@ -8,11 +8,11 @@ function formSubmit(str){
         if (str=="verb")
             document.home.action="wordsketch/verb"
         if (str=="noun")
-            document.home.action="wordsketch/noun"
+            document.home.action="wordsketch/verb"
         if (str=="adj")
-            document.home.action="wordsketch/adjective"
+            document.home.action="wordsketch/verb"
         if (str=="adv")
-            document.home.action="wordsketch/adverb"
+            document.home.action="wordsketch/verb"
         if (str=="" || str==null){
             alert("please choose a POS first")
             return
