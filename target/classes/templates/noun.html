@@ -179,7 +179,7 @@
                             <a th:href="@{'/wordsketch/noun?word='+${collocate.word}}" th:text="${collocate.word}"></a>
                         </td>
                         <td>
-                            <a th:href="@{'/wordsketch/sentence?phrase='+${word+collocate.word}}" th:text="${collocate.freq}"></a>
+                            <a th:href="@{'/wordsketch/sentence?phrase='+${collocate.word}}" th:text="${collocate.freq}"></a>
                         </td>
                     </tr>
                 </table>
@@ -220,13 +220,13 @@ function formSubmit(str){
     }
     else {
         if (str=="verb")
-            document.home.action="verb"
+            document.home.action="wordsketch/verb"
         if (str=="noun")
-            document.home.action="noun"
+            document.home.action="wordsketch/noun"
         if (str=="adj")
-            document.home.action="adjective"
+            document.home.action="wordsketch/adjective"
         if (str=="adv")
-            document.home.action="adverb"
+            document.home.action="wordsketch/adverb"
     }
     document.home.submit();
 }

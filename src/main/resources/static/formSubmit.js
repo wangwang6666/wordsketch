@@ -6,13 +6,13 @@ function formSubmit(str){
     }
     else {
         if (str=="verb")
-            document.home.action="verb"
+            document.home.action="wordsketch/verb"
         if (str=="noun")
-            document.home.action="noun"
+            document.home.action="wordsketch/noun"
         if (str=="adj")
-            document.home.action="adjective"
+            document.home.action="wordsketch/adjective"
         if (str=="adv")
-            document.home.action="adverb"
+            document.home.action="wordsketch/adverb"
         if (str=="" || str==null){
             alert("please choose a POS first")
             return
